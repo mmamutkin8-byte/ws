@@ -1,0 +1,334 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Premium typography & styling overrides */
+.font-heading {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Custom sound wave animation */
+@keyframes wave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.animate-wave-1 { animation: wave 1.2s ease-in-out infinite; }
+.animate-wave-2 { animation: wave 1.2s ease-in-out 0.2s infinite; }
+.animate-wave-3 { animation: wave 1.2s ease-in-out 0.4s infinite; }
+.animate-wave-4 { animation: wave 1.2s ease-in-out 0.1s infinite; }
+.animate-wave-5 { animation: wave 1.2s ease-in-out 0.3s infinite; }
+
+/* Subtle pulse glow */
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Stripe/Linear style subtle grid background */
+.bg-grid-subtle {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+.bg-dot-subtle {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Gold accent border gradient */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 50%, #92400E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blue-gradient-text {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #2563EB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium card shadow */
+.shadow-premium {
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+}
+
+.shadow-premium-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-premium-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.1), 0 2px 6px 0 rgba(15, 23, 42, 0.04);
+}
+
+/* ============================================
+   Monochrome Premium Glass — shared card system
+   ============================================ */
+
+/* Light-surface glass card (used on white/slate-50 sections) */
+.card-glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 1px 1px rgba(15, 23, 42, 0.03), 0 24px 48px -24px rgba(15, 23, 42, 0.16);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+.card-glass-hoverable:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 23, 42, 0.14);
+  box-shadow: 0 1px 1px rgba(15, 23, 42, 0.04), 0 32px 64px -24px rgba(15, 23, 42, 0.22);
+}
+
+/* Dark-surface glass card (used on black/slate-950/900 sections) */
+.card-glass-dark {
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 24px 48px -20px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+.card-glass-dark-hoverable:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 32px 64px -20px rgba(0, 0, 0, 0.65);
+}
+
+/* Inset tile — nested surface within a card (light) */
+.tile-glass {
+  background: rgba(15, 23, 42, 0.035);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  border-radius: 18px;
+}
+/* Inset tile — nested surface within a card (dark) */
+.tile-glass-dark {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+}
+
+/* Neutral pill badge (light) */
+.pill-glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.09);
+  border-radius: 999px;
+}
+/* Neutral pill badge (dark) */
+.pill-glass-dark {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+/* Primary monochrome CTA button */
+.btn-mono-primary {
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 32px -10px rgba(0,0,0,0.35);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.btn-mono-primary:hover {
+  background: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 16px 40px -10px rgba(0,0,0,0.45);
+}
+.btn-mono-primary-onDark {
+  background: #fff;
+  color: #0a0a0a;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 10px 40px -5px rgba(255,255,255,0.2);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
+}
+.btn-mono-primary-onDark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.2), 0 14px 50px -5px rgba(255,255,255,0.3);
+}
+
+/* ============================================
+   Monochrome Liquid Glass Hero — utilities
+   ============================================ */
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-hero-float {
+  animation: hero-float 7s ease-in-out infinite;
+}
+
+@keyframes glass-sheen-sweep {
+  0% { transform: translateX(-120%) skewX(-15deg); opacity: 0; }
+  15% { opacity: 0.5; }
+  50% { opacity: 0.3; }
+  85% { opacity: 0; }
+  100% { transform: translateX(220%) skewX(-15deg); opacity: 0; }
+}
+.glass-sheen {
+  isolation: isolate;
+}
+.glass-sheen::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 26%;
+  height: 140%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.09), transparent);
+  animation: glass-sheen-sweep 9s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes draw-underline {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+.animate-draw-underline {
+  transform-origin: left;
+  animation: draw-underline 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+/* Simple fade-in for modals / accordion reveals */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================
+   Accessibility — consistent monochrome focus ring
+   A dark ring separated by a light halo (and flipped on
+   dark surfaces) so it reads clearly on any background.
+   ============================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 0 0 4px rgba(10, 10, 10, 0.85);
+}
+
+/* Inside dark sections (black/slate-900+ backgrounds) flip the halo so the
+   ring reads correctly against a dark surface. */
+.card-glass-dark a:focus-visible,
+.card-glass-dark button:focus-visible,
+header a:focus-visible,
+header button:focus-visible,
+.pill-glass-dark:focus-visible,
+.btn-mono-primary-onDark:focus-visible {
+  box-shadow: 0 0 0 2px rgba(10, 10, 10, 0.9), 0 0 0 4px rgba(255, 255, 255, 0.85);
+}
+
+/* Native range slider — unified monochrome thumb/track across browsers */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #E2E8F0;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  margin-top: -6px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+input[type='range']:hover::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+input[type='range']:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 0 0 4px rgba(10, 10, 10, 0.85);
+}
+input[type='range']::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #E2E8F0;
+}
+input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+input[type='range']:hover::-moz-range-thumb {
+  transform: scale(1.12);
+}
+
+/* Respect user's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
